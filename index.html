@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Cortes Gaete - Ingeniero Informático</title>
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #112240;
+            --accent-color: #64ffda;
+            --text-color: #ccd6f6;
+            --light-text: #8892b0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Calibri', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+        
+        .hero-content h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .hero-content h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            color: var(--light-text);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--accent-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .experience-item {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .experience-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .experience-date {
+            color: var(--light-text);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            border-radius: 5px;
+        }
+        
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+        
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .certificate-item {
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .certificate-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certificate-img {
+            width: 100%;
+            height: 200px;
+            background-color: #1d3b61;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+        }
+        
+        .certificate-content {
+            padding: 20px;
+        }
+        
+        .certificate-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-item {
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #1d3b61;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            color: var(--light-text);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            
+            .hero-content h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">KCG</div>
+                <ul class="nav-links">
+                    <li><a href="#presentacion">Inicio</a></li>
+                    <li><a href="#desarrollo">Desarrollo Profesional</a></li>
+                    <li><a href="#conocimientos">Conocimientos</a></li>
+                    <li><a href="#certificados">Certificados</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="presentacion" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Kevin Cortes Gaete</h1>
+                <h2>Ingeniero Informático</h2>
+                <p>Soy un ingeniero informático nacido en Arica, Chile, con una gran pasión por la tecnología y especial interés en el ámbito de la ciberseguridad. Mi formación técnica y experiencia me han permitido desarrollar habilidades sólidas en este campo, donde continuamente busco aprender y mejorar para enfrentar los desafíos de un entorno digital en constante evolución.</p>
+                <a href="#contacto" class="btn">Contactarme</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="desarrollo">
+        <div class="container">
+            <h2 class="section-title">Desarrollo Profesional</h2>
+            
+            <div class="experience-item">
+                <h3>Operador NOC - Metrowan</h3>
+                <div class="experience-date">2023 - Presente</div>
+                <p>Me desempeño como Operador del área NOC, realizando monitoreo continuo de la red y brindando soporte de nivel 1. Mis responsabilidades incluyen:</p>
+                <ul>
+                    <li>Monitoreo proactivo de servicios y enlaces de red</li>
+                    <li>Detección y resolución primaria de incidencias</li>
+                    <li>Coordinación con equipos técnicos para la escalación de problemas</li>
+                    <li>Gestión de tickets y documentación de incidentes</li>
+                    <li>Soporte remoto a clientes empresariales</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Técnico Multifuncional - DIMACOFI</h3>
+                <div class="experience-date">Jun 2024 - Jul 2025</div>
+                <p>Me desempeñé como técnico en el área de servicio, principalmente a cargo de salas interactivas con pantallas touch y equipamiento para videoconferencias. Mis responsabilidades incluían:</p>
+                <ul>
+                    <li>Configuración y mantenimiento de equipos de videoconferencia</li>
+                    <li>Capacitación a clientes para el uso de salas de videoconferencias</li>
+                    <li>Gestión del proyecto de videowall para cliente BCI con turnos 24/7</li>
+                    <li>Configuración y reparación de impresoras</li>
+                    <li>Control de calidad de equipos en taller</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Desarrollo de Sistema de Gestión - Clínica Socio Jurídica</h3>
+                <div class="experience-date">Oct 2021 - Dic 2021</div>
+                <p>Lideré el desarrollo de un sistema web de gestión interna adaptado a las necesidades específicas de la clínica:</p>
+                <ul>
+                    <li>Análisis de requerimientos con el personal de la clínica</li>
+                    <li>Desarrollo full-stack utilizando PHP, MySQL, HTML y CSS</li>
+                    <li>Implementación de módulos de gestión de pacientes y casos</li>
+                    <li>Capacitación al personal para el uso del sistema</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Mantenimiento y Soporte TI - Independiente</h3>
+                <div class="experience-date">Ene 2020 - Presente</div>
+                <p>Realizo trabajos de soporte TI de manera independiente para diversas empresas:</p>
+                <ul>
+                    <li>Mantenimiento de equipos computacionales (hardware y software)</li>
+                    <li>Limpieza, armado e instalación de equipos</li>
+                    <li>Instalación y configuración de sistemas operativos y software</li>
+                    <li>Soporte técnico remoto y presencial</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="conocimientos">
+        <div class="container">
+            <h2 class="section-title">Conocimientos Técnicos</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Hacking Ético</h3>
+                    <ul class="skill-list">
+                        <li>Pruebas de penetración</li>
+                        <li>Análisis de vulnerabilidades</li>
+                        <li>Herramientas de seguridad (Metasploit, Nmap, Burp Suite)</li>
+                        <li>Reconocimiento y recopilación de información</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Ciberseguridad Ofensiva</h3>
+                    <ul class="skill-list">
+                        <li>Técnicas de explotación</li>
+                        <li>Análisis de malware</li>
+                        <li>Ingeniería inversa</li>
+                        <li>Post-explotación</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Ciberseguridad Defensiva</h3>
+                    <ul class="skill-list">
+                        <li>Gestión de incidentes de seguridad</li>
+                        <li>Monitoreo de redes (SIEM)</li>
+                        <li>Análisis forense digital</li>
+                        <li>Hardening de sistemas</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Sistemas Operativos</h3>
+                    <ul class="skill-list">
+                        <li>Windows Server</li>
+                        <li>Administración de Active Directory</li>
+                        <li>Distribuciones Linux (Kali, Ubuntu, CentOS)</li>
+                        <li>Scripting en PowerShell y Bash</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificados">
+        <div class="container">
+            <h2 class="section-title">Certificados</h2>
+            
+            <div class="certificates-grid">
+                <div class="certificate-item">
+                    <div class="certificate-img">Imagen de Certificado</div>
+                    <div class="certificate-content">
+                        <h3>IT Essentials: PC Hardware and Software</h3>
+                        <p>CISCO - Agosto 2019</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">Imagen de Certificado</div>
+                    <div class="certificate-content">
+                        <h3>CCNA R&S: Introduction to Networks</h3>
+                        <p>CISCO - Julio 2020</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">Imagen de Certificado</div>
+                    <div class="certificate-content">
+                        <h3>CCNA R&S: Routing and Switching Essentials</h3>
+                        <p>CISCO - Enero 2021</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">Imagen de Certificado</div>
+                    <div class="certificate-content">
+                        <h3>Fundamentos Profesionales de IA Generativa</h3>
+                        <p>Microsoft y LinkedIn - Marzo 2024</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">Imagen de Certificado</div>
+                    <div class="certificate-content">
+                        <h3>Fundamentos Profesionales en Ciberseguridad</h3>
+                        <p>Microsoft y LinkedIn - Mayo 2024</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">Imagen de Certificado</div>
+                    <div class="certificate-content">
+                        <h3>Introduction to Cybersecurity</h3>
+                        <p>CISCO - Junio 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos">
+        <div class="container">
+            <h2 class="section-title">Proyectos</h2>
+            
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-img">Imagen de Proyecto</div>
+                    <div class="project-content">
+                        <h3>Sistema de Gestión para Clínica</h3>
+                        <p>Desarrollo de un sistema web interno para la gestión de pacientes y casos en una clínica socio jurídica.</p>
+                        <p><strong>Tecnologías:</strong> PHP, MySQL, HTML, CSS</p>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-img">Imagen de Proyecto</div>
+                    <div class="project-content">
+                        <h3>Laboratorio de Ciberseguridad</h3>
+                        <p>Entorno virtualizado para prácticas de hacking ético y análisis de seguridad.</p>
+                        <p><strong>Tecnologías:</strong> VMware, Kali Linux, Metasploit, Wireshark</p>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-img">Imagen de Proyecto</div>
+                    <div class="project-content">
+                        <h3>Script de Automatización de Hardening</h3>
+                        <p>Desarrollo de scripts para automatizar el proceso de hardening en servidores Windows y Linux.</p>
+                        <p><strong>Tecnologías:</strong> PowerShell, Bash, CIS Benchmarks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="contact-info">
+                <h2>Contacto</h2>
+                <p>Email: k.cortesgaete@gmail.com</p>
+                <p>Teléfono: +56 9 7296 1457</p>
+                <p>Ubicación: Santiago, Chile (Disponibilidad para reubicación)</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/kcortesg/" target="_blank">LinkedIn</a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Kevin Cortes Gaete. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
